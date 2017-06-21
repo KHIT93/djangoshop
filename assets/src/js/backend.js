@@ -9,7 +9,7 @@ import './bootstrap';
 
 import Vuetify from 'vuetify';
 import VueRouter from 'vue-router';
-import NotFound from './components/Backend/NotFound.vue';
+import NotFound from './components/NotFound.vue';
 
 
 Vue.use(Vuetify);
