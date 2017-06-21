@@ -195,4 +195,6 @@ Next run `npm install` to install the `NodeJS` packages needed for asset compila
 Next we need to run migrations to prepare the database. Make sure that you are in the `src` folder and then run `python manage.py migrate`
 This will create a local sqlite3 database that can be used for development and testing.
 
+Now create a superuser, so that you can log in to the admin sectin of the application. This is done using `python manage.py createsuperuser`
+
 If you have done everything correctly, then you should be able to access the application at `http://djangoshop.local:8000` or `http://localhost:8000` by running `python manage.py runserver`
