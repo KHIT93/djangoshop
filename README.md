@@ -8,14 +8,14 @@ Start by making sure that you have python 3 and virtualenv installed. You can fo
 https://www.codingforentrepreneurs.com/projects/start-with-windows/
 ```
 
--macOS
+- macOS
 Please note that you only need to install virtualenv, as macOS comes with Python 3 preinstalled
 
 ```
 https://www.codingforentrepreneurs.com/projects/get-with-mac/
 ```
 
--Linux
+- Linux
 Please note that some versions of Linux have different ways to get the python tools that you need. Pleae refer to the documentation of your Linux distrubution to find out what the specific steps are for your Linux distribution
 ```
 https://www.codingforentrepreneurs.com/projects/start-with-linux/
