@@ -208,6 +208,8 @@ Now that we are inside our virtual environment, we have to install the `python` 
 Make sure that you are in the `src` folder
 First run `pip install -r requirements.txt` and wait for it to complete.
 Next run `npm install` to install the `NodeJS` packages needed for asset compilation.
+After this we can compile the assets using `npm run dev`. To compile the production ready verison run `npm run production`.
+To have `npm` automatically compile sources when they are changed you can run `npm run watch`.
 
 Next we need to run migrations to prepare the database, Run `python manage.py migrate`
 This will create a local sqlite3 database that can be used for development and testing.
