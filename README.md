@@ -3,6 +3,7 @@ To create a new instance for development follow the below steps.
 
 ## Requirements
 Before you continue, please make sure that you have `GraphViz` installed. It can be downloaded from here: http://www.graphviz.org/Download..php
+NodeJS: https://nodejs.org/en/download/current/
 
 Start by making sure that you have python 3 and virtualenv installed. You can follow these guides on how to get it done:
 - Windows
@@ -203,7 +204,7 @@ Make sure that you are in the virtual environment. From your `~/Code/djangoshop`
 If you are using `Powershell` on Windows, please make sure that your execution policy is set to `RemoteSigned`.
 
 Now that we are inside our virtual environment, we have to install the `python` and `NodeJS` packages that we need.
-First run `pip install -r requirements.txt` and wait for it to complete.
+First run `pip install -r src/requirements.txt` and wait for it to complete.
 Next run `npm install` to install the `NodeJS` packages needed for asset compilation.
 
 Next we need to run migrations to prepare the database. Make sure that you are in the `src` folder and then run `python manage.py migrate`
