@@ -187,7 +187,7 @@ Add the following entry to the bottom of the file:
 127.0.0.1	djangoshop.local
 ```
 
-# Installing packages
+## Installing packages
 Make sure that you are in the virtual environment. From your `~/Code/djangoshop` directory run `source bin/activate` on macOS/Linux and on Windows run `.\Scripts\activate`
 If you are using `Powershell` on Windows, please make sure that your execution policy is set to `RemoteSigned`.
 
@@ -201,3 +201,12 @@ This will create a local sqlite3 database that can be used for development and t
 Now create a superuser, so that you can log in to the admin sectin of the application. This is done using `python manage.py createsuperuser`
 
 If you have done everything correctly, then you should be able to access the application at `http://djangoshop.local:8000` or `http://localhost:8000` by running `python manage.py runserver`
+
+## UML Diagrams
+If for some reason you need to regenerate the UML-diagram for the application this can be done with the following command from within the src folder:
+
+```
+python manage.py graph_models -a -o djangoshop.png
+```
+
+This will generate a new UML-diagram and save it has `djangoshop.png`
