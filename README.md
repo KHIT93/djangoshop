@@ -204,10 +204,11 @@ Make sure that you are in the virtual environment. From your `~/Code/djangoshop`
 If you are using `Powershell` on Windows, please make sure that your execution policy is set to `RemoteSigned`.
 
 Now that we are inside our virtual environment, we have to install the `python` and `NodeJS` packages that we need.
-First run `pip install -r src/requirements.txt` and wait for it to complete.
+Make sure that you are in the `src` folder
+First run `pip install -r requirements.txt` and wait for it to complete.
 Next run `npm install` to install the `NodeJS` packages needed for asset compilation.
 
-Next we need to run migrations to prepare the database. Make sure that you are in the `src` folder and then run `python manage.py migrate`
+Next we need to run migrations to prepare the database, Run `python manage.py migrate`
 This will create a local sqlite3 database that can be used for development and testing.
 
 Now create a superuser, so that you can log in to the admin sectin of the application. This is done using `python manage.py createsuperuser`
