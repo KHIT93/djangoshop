@@ -1,6 +1,9 @@
 # Djangoshop
 To create a new instance for development follow the below steps.
 
+## Requirements
+Before you continue, please make sure that you have `GraphViz` installed. It can be downloaded from here: http://www.graphviz.org/Download..php
+
 Start by making sure that you have python 3 and virtualenv installed. You can follow these guides on how to get it done:
 - Windows
 
