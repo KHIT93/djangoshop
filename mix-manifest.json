@@ -1,4 +1,4 @@
 {
-    "/assets/dist/js/frontend.js": "/assets/dist/js/frontend.js",
-    "/assets/dist/css/app.css": "/assets/dist/css/app.css"
+    "/assets/compiled/js/frontend.js": "/assets/compiled/js/frontend.js",
+    "/assets/compiled/css/app.css": "/assets/compiled/css/app.css"
 }
