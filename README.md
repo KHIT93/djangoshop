@@ -89,6 +89,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'django_extensions',
+    'store',
+    'customers'
 ]
 
 MIDDLEWARE = [
@@ -106,7 +108,7 @@ ROOT_URLCONF = 'djangoshop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -171,14 +173,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "assets/dist")
-#STATICFILES_DIRS = [
-#    os.path.join(BASE_DIR, "static")
-#]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "assets", "compiled")
+]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
 ADMIN_MEDIA_PREFIX = '/media/admin/'
-
 ```
 
 Next you need to update your hosts file to allow accessing `djangoshop.local`
@@ -209,7 +210,7 @@ Make sure that you are in the `src` folder
 First run `pip install -r requirements.txt` and wait for it to complete.
 Next run `npm install` to install the `NodeJS` packages needed for asset compilation.
 After this we can compile the assets using `npm run dev`. To compile the production ready verison run `npm run production`.
-To have `npm` automatically compile sources when they are changed you can run `npm run watch`.
+To make assets available for use run `python manage.py collectstatic`
 
 Next we need to run migrations to prepare the database, Run `python manage.py migrate`
 This will create a local sqlite3 database that can be used for development and testing.
