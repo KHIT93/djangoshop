@@ -1,7 +1,8 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 
-class Customer(User):
+class Customer(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL)
     address1 = models.CharField(max_length=255)
     address2 = models.CharField(max_length=255)
     address3 = models.CharField(max_length=255)
