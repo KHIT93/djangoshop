@@ -20,5 +20,5 @@ from store.views.home_page_view import HomePageView
 urlpatterns = [
     url(r'^$', HomePageView.as_view(), name='home'),
     url(r'^admin/', admin.site.urls),
-    #url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^accounts/', include('allauth.urls')),
 ]

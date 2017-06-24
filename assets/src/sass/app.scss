@@ -9,7 +9,10 @@
 @import "node_modules/bootstrap/scss/bootstrap";
 
 body {
-  min-height: 75rem; /* Can be removed; just added for demo purposes */
+  min-height: 75rem;
+  padding-top: 6rem;
+  padding-bottom: 3rem;
+  color: #5a5a5a;
 }
 
 .navbar {
@@ -36,7 +39,7 @@ body {
 }
 
 .album {
-  min-height: 50rem; /* Can be removed; just added for demo purposes */
+  min-height: 50rem;
   padding-top: 3rem;
   padding-bottom: 3rem;
   background-color: #f7f7f7;
