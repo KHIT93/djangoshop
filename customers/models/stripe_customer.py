@@ -4,6 +4,8 @@ from django.db import models
 class StripeCustomer(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
     stripe_id = models.CharField(max_length=200, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
     def __str__(self):
         if self.stripe_id:
