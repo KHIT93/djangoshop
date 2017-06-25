@@ -37,10 +37,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'rest_framework',
     'django_extensions',
+    'crispy_forms',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'app_settings',
     'store',
     'customers',
+    'products',
+    'checkout',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +78,14 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 WSGI_APPLICATION = 'djangoshop.wsgi.application'
 
@@ -117,6 +133,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+SITE_ID = 1
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
@@ -130,3 +150,15 @@ STATIC_ROOT = os.path.join(BASE_DIR, "assets/dist")
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
 ADMIN_MEDIA_PREFIX = '/media/admin/'
+
+#AllAuth Configuration
+# http://django-allauth.readthedocs.io/en/latest/configuration.html
+
+LOGIN_URL="/accounts/login"
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_AUTHENTICATION_METHOD="email"
+ACCOUNT_EMAIL_REQUIRED=True
+ACCOUNT_EMAIL_VERIFICATION="none"
+ACCOUNT_DEFAULT_HTTP_PROTOCOL="https"
+ACCOUNT_LOGOUT_ON_GET=True
+ACCOUNT_USERNAME_REQUIRED=False

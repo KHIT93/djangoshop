@@ -1,0 +1,5 @@
+from django.contrib import admin
+from .models.app_setting import AppSetting
+# Register your models here.
+
+admin.site.register(AppSetting)
