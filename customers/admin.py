@@ -4,15 +4,15 @@ from .models.customer import Customer
 from .models.stripe_customer import StripeCustomer
 # Register your models here.
 
-class CustomerModelAdmin(admin.ModelAdmin):
-    list_display = ['address1', 'zip_code', 'state', 'country']
+class CustomerAdmin(admin.ModelAdmin):
+    list_display = ["__str__", "address1", "zip_code", "state" ,"country","created_at"]
     class Meta:
         model = Customer
 
-class StripeCustomerModelAdmin(admin.ModelAdmin):
-    list_display = ['customer', 'stripe_id']
+class StripeCustomerAdmin(admin.ModelAdmin):
+    list_display = ["__str__","created_at"]
     class Meta:
         model = StripeCustomer
 
-admin.site.register(Customer, CustomerModelAdmin)
-admin.site.register(StripeCustomer, StripeCustomerModelAdmin)
+admin.site.register(Customer, CustomerAdmin)
+admin.site.register(StripeCustomer, StripeCustomerAdmin)

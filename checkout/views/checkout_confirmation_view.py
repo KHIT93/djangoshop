@@ -6,7 +6,7 @@ from checkout.models.cart import Cart
 from checkout.models.cart_item import CartItem
 from app_settings.models.app_setting import AppSetting
 from orders.models.order import Order
-from orders.models.order_line import Order_Line
+from orders.models.OrderLine import OrderLine
 #from djangoshop.mixins.login_required_mixin import LoginRequiredMixin
 import json
 import stripe
@@ -53,7 +53,7 @@ class CheckoutConfirmationView(TemplateView):
 
         order = Order.objects.create(customer=cart.customer, invoiced=invoiced)
         for i in cart.cartitem_set.all():
-            Order_Line.objects.create(order=order, product=i.product, quantity=i.quantity)
+            OrderLine.objects.create(order=order, product=i.product, quantity=i.quantity)
 
         order.update_total()
         cart.delete()

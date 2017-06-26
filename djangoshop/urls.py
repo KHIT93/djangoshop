@@ -16,19 +16,25 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from store.views.home_page_view import HomePageView
+from store.views.product_list_view import ProductListView
 from checkout.views.cart_view import CartView
 from checkout.views.checkout_address_view import CheckoutAddressView
 from checkout.views.checkout_confirmation_view import CheckoutConfirmationView
 from checkout.views.checkout_completed_view import CheckoutCompletedView
 from products.views.product_detail_view import ProductDetailView
+from customers.views.myaccount_detail_view import MyAccountDetailView
+
 
 urlpatterns = [
     url(r'^$', HomePageView.as_view(), name='home'),
     url(r'^product/(?P<pk>\d+)', ProductDetailView.as_view(), name='product'),
+    url('^myaccount/', MyAccountDetailView.as_view(), name='myaccount'),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^cart/', CartView.as_view(), name='cart'),
     url(r'^checkout/address', CheckoutAddressView.as_view(), name='checkout_address'),
     url(r'^checkout/confirm', CheckoutConfirmationView.as_view(), name='checkout_confirm'),
     url(r'^checkout/complete', CheckoutCompletedView.as_view(), name='checkout_complete'),
+    url(r'^shop/(?P<pk>\d+)', ProductListView.as_view(), name='shop'),
+    url(r'^shop/$', ProductListView.as_view(), name='shop'),
 ]
