@@ -1,12 +1,12 @@
 from django.contrib import admin
 from .models.order import Order
-from .models.order_line import Order_Line
+from .models.order_line import OrderLine
 
-class Order_LineAdmin(admin.ModelAdmin):
+class OrderLineAdmin(admin.ModelAdmin):
     list_display = ["__str__", "product", "quantity", "created_at"]
     class Meta:
-        model = Order_Line
+        model = OrderLine
 
 # Register your models here.
 admin.site.register(Order)
-admin.site.register(Order_Line, Order_LineAdmin)
+admin.site.register(OrderLine, OrderLineAdmin)

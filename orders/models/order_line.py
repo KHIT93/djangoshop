@@ -2,7 +2,7 @@ from django.db import models
 from .order import Order
 from products.models.product import Product
 
-class Order_Line(models.Model):
+class OrderLine(models.Model):
     order = models.ForeignKey(Order)
     product = models.ForeignKey(Product)
     quantity = models.IntegerField(default=0)
