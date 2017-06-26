@@ -16,19 +16,21 @@
                     <h6 class="title-price"><small>PRICE</small></h6>
                     <h3 style="margin-top:0px;">$US {{ product.price }}</h3>
 
-                    
-                    <!-- Quantity -->
-                    <div class="section" style="padding-bottom:20px;">
-                        <h6 class="title-attr"><small>Quantity</small></h6>
-                        <div>
-                            <input class="form-control" value="1" />
+                    <form action="{% url 'cart' %}" method="post">
+                        {% csrf_token %}
+                        <!-- Quantity -->
+                        <div class="section" style="padding-bottom:20px;">
+                            <h6 class="title-attr"><small>Quantity</small></h6>
+                            <div>
+                                <input class="form-control" value="1" />
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Add to cart -->
-                    <div class="section" style="padding-bottom:20px;">
-                        <button class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span> Add to cart</button>
-                    </div>
+                        <!-- Add to cart -->
+                        <div class="section" style="padding-bottom:20px;">
+                            <button class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span> Add to cart</button>
+                        </div>
+                    </form>
                 </div>
 
                 <div class="col-sm-12" style="margin-top: 15px">
