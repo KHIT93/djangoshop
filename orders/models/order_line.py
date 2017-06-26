@@ -24,8 +24,8 @@ def order_line_pre_save_receiver(sender, instance, *args, **kwargs):
 def order_line_post_save_receiver(sender, instance, *args, **kwargs):
     instance.cart.update_total()
 
-pre_save.connect(order_line_pre_save_receiver, sender=Order_Line)
+pre_save.connect(order_line_pre_save_receiver, sender=OrderLine)
 
-post_save.connect(order_line_post_save_receiver, sender=Order_Line)
+post_save.connect(order_line_post_save_receiver, sender=OrderLine)
 
-post_delete.connect(order_line_post_save_receiver, sender=Order_Line)
+post_delete.connect(order_line_post_save_receiver, sender=OrderLine)
