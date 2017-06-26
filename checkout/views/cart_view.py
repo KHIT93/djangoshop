@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect
 
 # Create your views here.
 
@@ -19,7 +20,6 @@ class CartView(TemplateView):
             cart.save()
             cart_id = cart.id
             self.request.session["cart_id"] = cart_id
-            #cart = Cart.objects.filter(id=cart_id).prefetch_related('items')
         cart = Cart.objects.get(id=cart_id)
         if self.request.user.is_authenticated():
             cart.user = self.request.user
@@ -35,6 +35,7 @@ class CartView(TemplateView):
         return super(CartView, self).get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
+        print(request.POST)
         cart = self.get_object()
         item_id = request.POST.get("item")
         delete_item = request.POST.get("delete", False)
@@ -55,7 +56,5 @@ class CartView(TemplateView):
             else:
                 cart_item.quantity = qty
                 cart_item.save()
-            if not request.is_ajax():
-                return HttpResponseRedirect(reverse("cart"))
-				#return cart_item.cart.get_absolute_url()
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            return self.get(request, *args, **kwargs)
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

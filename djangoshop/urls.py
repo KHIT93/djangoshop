@@ -17,7 +17,6 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from store.views.home_page_view import HomePageView
 from checkout.views.cart_view import CartView
-from checkout.views.remove_from_cart_view import RemoveFromCartView
 from products.views.product_detail_view import ProductDetailView
 
 urlpatterns = [
@@ -26,5 +25,4 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^cart/', CartView.as_view(), name='cart'),
-    url(r'^cart/remove', RemoveFromCartView.as_view(), name='cart_remove'),
 ]
