@@ -4,7 +4,7 @@ from .cart_item import CartItem
 from products.models.product import Product
 
 class Cart(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True)
     items = models.ManyToManyField(Product, through=CartItem)
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
