@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block head_title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+        <div class="container">
+        	<div class="row">
+               <div class="col-sm-5 item-photo">
+                    <img style="max-width:100%;" data-src="holder.js/100px380/thumb" alt="Card image cap" />
+                </div>
+                <div class="col-sm-4" style="border:0px solid gray">
+                    <!-- Product name -->
+                    <h3>{{ product.name }}</h3>
+
+                    <!-- Price -->
+                    <h6 class="title-price"><small>PRICE</small></h6>
+                    <h3 style="margin-top:0px;">$US {{ product.price }}</h3>
+
+                    
+                    <!-- Quantity -->
+                    <div class="section" style="padding-bottom:20px;">
+                        <h6 class="title-attr"><small>Quantity</small></h6>
+                        <div>
+                            <input class="form-control" value="1" />
+                        </div>
+                    </div>
+
+                    <!-- Add to cart -->
+                    <div class="section" style="padding-bottom:20px;">
+                        <button class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span> Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="col-sm-12" style="margin-top: 15px">
+                    <div style="width:100%;border-top:1px solid silver">
+                        <p style="padding:15px;">
+                            <small>
+                            {{ product.description }}
+                            </small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
