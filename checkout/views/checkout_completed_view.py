@@ -12,7 +12,9 @@ class CheckoutCompletedView(TemplateView):
         order_id = self.request.session.get("order_id")
         if order_id == None:
             raise Http404
-        order = Order.objects.get(id=cart_id)
+        order = Order.objects.get(id=order_id)
+        del self.request.session["order_id"]
+        self.request.session.modified = True
         return order
 
     def get_context_data(self, *args, **kwargs):
@@ -23,6 +25,5 @@ class CheckoutCompletedView(TemplateView):
     def get(self, request, *args, **kwargs):
         if self.request.session.get("order_id") == None:
             return HttpResponseRedirect(reverse("cart"))
-        #del self.request.session["order_id"]
-        #self.request.session.modified = True
+
         return super(CheckoutCompletedView, self).get(request, *args, **kwargs)

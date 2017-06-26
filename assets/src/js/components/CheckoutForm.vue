@@ -38,12 +38,11 @@
 
                     axios.post(this.payment_url, { stripeToken: this.stripeToken, stripeEmail: this.stripeEmail, payment_method: 'stripe'})
                         .then(function(response){
-                            alert('Complete! Thanks for your payment!');
+                            console.log(response)
+                            //alert('Complete! Thanks for your payment!');
                             this.status = response.data.status;
                             window.location.href = response.data.url;
-                        }).catch(function(error){
-                            console.log(error.response);
-                        });
+                        }.bind(this));
                 }
             });
         },

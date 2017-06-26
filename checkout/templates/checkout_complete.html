@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-10 col-sm-offset-2">
-                <h1>Order summary</h1>
+                <h1>Order summary for order #{{ order.id }}</h1>
                 <p>Thank you very much for your order. Please find the details below</p>
                 {% if not order.invoiced %}
                 <p>Your order is awaiting payment and details on how to pay using bank transfer are listed in the confirmation email, which we have just sent to you</p>

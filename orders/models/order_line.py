@@ -1,3 +1,4 @@
+from decimal import Decimal
 from django.db import models
 from .order import Order
 from products.models.product import Product
@@ -22,7 +23,7 @@ def order_line_pre_save_receiver(sender, instance, *args, **kwargs):
         instance.line_item_total = line_item_total
 
 def order_line_post_save_receiver(sender, instance, *args, **kwargs):
-    instance.cart.update_total()
+    instance.order.update_total()
 
 pre_save.connect(order_line_pre_save_receiver, sender=OrderLine)
 
