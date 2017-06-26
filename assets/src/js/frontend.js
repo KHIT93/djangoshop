@@ -20,6 +20,11 @@ try {
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    methods: {
+        redirect(url)
+        {
+            window.location.href = url;
+        }
+    }
 });
-
