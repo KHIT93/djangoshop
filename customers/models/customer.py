@@ -13,4 +13,4 @@ class Customer(models.Model):
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 
     def __str__(self):
-        return self.user
+        return str(self.user)

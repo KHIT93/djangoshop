@@ -19,11 +19,13 @@ from store.views.home_page_view import HomePageView
 from store.views.product_list_view import ProductListView
 from checkout.views.cart_view import CartView
 from products.views.product_detail_view import ProductDetailView
+from customers.views.myaccount_detail_view import MyAccountDetailView
 
 
 urlpatterns = [
     url(r'^$', HomePageView.as_view(), name='home'),
     url(r'^product/(?P<pk>\d+)', ProductDetailView.as_view(), name='product'),
+    url('^myaccount/', MyAccountDetailView.as_view(), name='myaccount'),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^cart/', CartView.as_view(), name='cart'),
