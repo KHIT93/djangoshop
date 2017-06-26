@@ -16,9 +16,11 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from store.views.home_page_view import HomePageView
+from products.views.product_detail_view import ProductDetailView
 
 urlpatterns = [
     url(r'^$', HomePageView.as_view(), name='home'),
+    url(r'^product/(?P<pk>\d+)', ProductDetailView.as_view(), name='product'),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
 ]
