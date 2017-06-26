@@ -16,127 +16,27 @@
 
     <div class="album text-muted">
         <div class="container">
-
             <div class="row">
-                <div class="card">
-                    <img data-src="holder.js/100px280/thumb" alt="Card image cap">
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text">$ 200.00</p>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <button class="btn btn-success">Add to cart</button>
-                        </div>
-                        <div class="col-sm-6">
-                            <button class="btn btn-secondary">Read more</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img data-src="holder.js/100px280/thumb" alt="Card image cap">
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text">$ 200.00</p>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <button class="btn btn-success">Add to cart</button>
-                        </div>
-                        <div class="col-sm-6">
-                            <button class="btn btn-secondary">Read more</button>
+                <form action="{% url 'cart' %}" method="post">
+                {% csrf_token %}
+                {% for product in product_list %}
+                    <div class="card">
+                        <input type="hidden" name="item" value="{{ product.id }}" />
+                        <input type="hidden" name="qty" value="1" />
+                        <img data-src="holder.js/100px280/thumb" alt="Card image cap">
+                        <p class="card-text">{{product.name}}</p>
+                        <p class="card-text">$ {{product.price}}</p>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button class="btn btn-success">Add to cart</button>
+                            </div>
+                            <div class="col-sm-6">
+                                <button class="btn btn-secondary">Read more</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card">
-                    <img data-src="holder.js/100px280/thumb" alt="Card image cap">
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text">$ 200.00</p>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <button class="btn btn-success">Add to cart</button>
-                        </div>
-                        <div class="col-sm-6">
-                            <button class="btn btn-secondary">Read more</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img data-src="holder.js/100px280/thumb" alt="Card image cap">
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text">$ 200.00</p>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <button class="btn btn-success">Add to cart</button>
-                        </div>
-                        <div class="col-sm-6">
-                            <button class="btn btn-secondary">Read more</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img data-src="holder.js/100px280/thumb" alt="Card image cap">
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text">$ 200.00</p>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <button class="btn btn-success">Add to cart</button>
-                        </div>
-                        <div class="col-sm-6">
-                            <button class="btn btn-secondary">Read more</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img data-src="holder.js/100px280/thumb" alt="Card image cap">
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text">$ 200.00</p>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <button class="btn btn-success">Add to cart</button>
-                        </div>
-                        <div class="col-sm-6">
-                            <button class="btn btn-secondary">Read more</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img data-src="holder.js/100px280/thumb" alt="Card image cap">
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text">$ 200.00</p>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <button class="btn btn-success">Add to cart</button>
-                        </div>
-                        <div class="col-sm-6">
-                            <button class="btn btn-secondary">Read more</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img data-src="holder.js/100px280/thumb" alt="Card image cap">
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text">$ 200.00</p>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <button class="btn btn-success">Add to cart</button>
-                        </div>
-                        <div class="col-sm-6">
-                            <button class="btn btn-secondary">Read more</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img data-src="holder.js/100px280/thumb" alt="Card image cap">
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text">$ 200.00</p>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <button class="btn btn-success">Add to cart</button>
-                        </div>
-                        <div class="col-sm-6">
-                            <button class="btn btn-secondary">Read more</button>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
+                </form>
             </div>
 
         </div>
