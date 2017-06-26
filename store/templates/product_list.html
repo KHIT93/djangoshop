@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block head_title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+
+<!--
+<ul class="nav flex-column">
+
+</ul>
+-->
+<div class="container">
+    <div class="d-flex flex-row">
+        <nav class="sidebar" style="width:300px">
+          <ul class="navbar-nav nav-pills flex-column">
+            {% for cat in category %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'shop' pk=cat.id %}">
+                        {{cat.name}}<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span>
+                    </a>
+                </li>
+            {% endfor %}
+          </ul>
+        </nav>
+        <div class="p-2">
+            <div class="d-flex flex-wrap">
+        {% for product in product_list %}
+            <div class="p-2">
+                <img data-src="holder.js/100px300/thumb" alt="Card image cap">
+                    <p class="card-text">{{product.name}}</p>
+                    <p class="card-text">$ {{product.price}}</p>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <form action="{% url 'cart' %}" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="item" value="{{ product.id }}" />
+                                <input type="hidden" name="qty" value="1" />
+
+                                <button class="btn btn-success">Add to cart</button>
+                            </form>
+                        </div>
+                        <div class="col-sm-6">
+                            <button class="btn btn-secondary" @click="redirect('{% url 'product' pk=product.id %}')">Read more</button>
+                        </div>
+                    </div>
+            </div>
+        {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
