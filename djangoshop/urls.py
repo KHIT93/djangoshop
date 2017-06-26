@@ -17,7 +17,6 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from store.views.home_page_view import HomePageView
 from checkout.views.cart_view import CartView
-from checkout.views.remove_from_cart_view import RemoveFromCartView
 from products.views.product_detail_view import ProductDetailView
 
 urlpatterns = [
