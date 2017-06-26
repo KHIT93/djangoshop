@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 
 # Create your views here.
 
@@ -7,6 +7,7 @@ from django.views.generic.base import TemplateView
 from checkout.models.cart import Cart
 from checkout.models.cart_item import CartItem
 from products.models.product import Product
+from customers.models.customer import Customer
 
 class CartView(TemplateView):
     template_name = "cart.html"
@@ -16,13 +17,13 @@ class CartView(TemplateView):
         cart_id = self.request.session.get("cart_id")
         if cart_id == None:
             cart = Cart()
-            cart.tax_percentage = 0.25
             cart.save()
             cart_id = cart.id
             self.request.session["cart_id"] = cart_id
         cart = Cart.objects.get(id=cart_id)
         if self.request.user.is_authenticated():
-            cart.user = self.request.user
+            customer, created = Customer.objects.get_or_create(user=self.request.user)
+            cart.customer = customer
             cart.save()
         return cart
 

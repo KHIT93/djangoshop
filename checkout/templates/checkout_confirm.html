@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}Checkout | {{ block.super }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-2">
+                <h1>Checkout summary</h1>
+                <p>Please confirm your order and we will forward you to our secure payment site</p>
+                <table class='table'>
+                    <tr>
+                        <td>{{ cart.cartitem_set.count }} Item(s): <br/>
+                            <table class="table">
+                            {% for i in cart.cartitem_set.all %}
+                                <tr>
+                                    <td>{{ i.product.name }}</td>
+                                    <td>{{ i.line_item_total }}</td>
+                                </tr>
+                            {% endfor %}
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Order Total: {{ cart.total }}</td>
+                    </tr>
+                </table>
+                <div class="modal-footer">
+                    <form method="POST" action="{% url 'checkout_confirm' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="payment_method" value="bank_transfer"/>
+                        <button type="submit" class="btn btn-secondary">Pay with bank transfer</button>
+                    </form>
+                    <checkout-form paymentkey="{{ stripe_key.value }}" email="{{ cart.customer.user.email }}" amount="{{ cart.total }}" paymenturl="{% url 'checkout_confirm' %}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

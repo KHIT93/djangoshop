@@ -1,0 +1,1 @@
+from login_required_mixin import LoginRequiredMixin

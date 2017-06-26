@@ -59,7 +59,8 @@
             </nav>
             {% block content %}{% endblock %}
         </div>
-
+        
+        <script src="https://checkout.stripe.com/checkout.js"></script>
         <script defer src="{% static 'js/frontend.js' %}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.js"></script>
         {% block scripts %}{% endblock %}

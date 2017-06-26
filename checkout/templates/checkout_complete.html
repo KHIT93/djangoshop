@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}Thank you for your order | {{ block.super }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-2">
+                <h1>Order summary</h1>
+                <p>Thank you very much for your order. Please find the details below</p>
+                {% if not order.invoiced %}
+                <p>Your order is awaiting payment and details on how to pay using bank transfer are listed in the confirmation email, which we have just sent to you</p>
+                {% endif %}
+                <table class='table'>
+                    <tr>
+                        <td>{{ order.orderline_set.count }} Item(s): <br/>
+                            <table class="table">
+                            {% for i in order.orderline_set.all %}
+                                <tr>
+                                    <td>{{ i.product.name }}</td>
+                                    <td>{{ i.line_item_total }}</td>
+                                </tr>
+                            {% endfor %}
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Order Total: {{ order.total }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

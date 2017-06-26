@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}Checkout | {{ block.super }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-2">
+                <h1>Address information</h1>
+                <p>Please fill in your address information. If the information is already correct, then just click continue
+                <form method="POST" action="{% url 'checkout_address' %}">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <a class="btn btn-secondary" href="{% url 'cart' %}">Go back to cart</a>
+                  <button class="btn btn-primary" type="submit">Continue</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

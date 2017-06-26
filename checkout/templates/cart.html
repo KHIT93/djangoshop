@@ -38,6 +38,11 @@
                     <tr>
                        <td colspan='4' class='text-right'>Total: <span id='carttotal'>{{ object.total }}</span></td>
                     </tr>
+                    <tr>
+                        <td colspan="4" class="text-right">
+                            <a href="{% url 'checkout_address' %}" class="btn btn-info">Checkout</a>
+                        </td>
+                    </tr>
                 </table>
                 {% endif %}
             </div>

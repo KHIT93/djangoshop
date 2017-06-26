@@ -1,5 +1,6 @@
 
 window._ = require('lodash');
+var Cookies = require('js-cookie');
 
 import Vue from 'vue';
 import axios from 'axios';
@@ -14,3 +15,11 @@ window.Vue = Vue;
  */
 
 window.axios = axios;
+
+window.axios.defaults.headers.common['X-CSRFToken'] = Cookies.get('csrftoken');
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+window.axios.interceptors.request.use(request => {
+  console.log('Starting Request', request)
+  return request
+})

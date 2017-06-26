@@ -19,6 +19,9 @@ try {
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+ Vue.component('CheckoutForm', require('./components/CheckoutForm.vue'));
+
+
 const app = new Vue({
     el: '#app',
     methods: {

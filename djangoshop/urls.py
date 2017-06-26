@@ -17,6 +17,9 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from store.views.home_page_view import HomePageView
 from checkout.views.cart_view import CartView
+from checkout.views.checkout_address_view import CheckoutAddressView
+from checkout.views.checkout_confirmation_view import CheckoutConfirmationView
+from checkout.views.checkout_completed_view import CheckoutCompletedView
 from products.views.product_detail_view import ProductDetailView
 
 urlpatterns = [
@@ -25,4 +28,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^cart/', CartView.as_view(), name='cart'),
+    url(r'^checkout/address', CheckoutAddressView.as_view(), name='checkout_address'),
+    url(r'^checkout/confirm', CheckoutConfirmationView.as_view(), name='checkout_confirm'),
+    url(r'^checkout/complete', CheckoutCompletedView.as_view(), name='checkout_complete'),
 ]
