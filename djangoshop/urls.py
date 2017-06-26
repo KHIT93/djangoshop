@@ -26,5 +26,4 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^cart/', CartView.as_view(), name='cart'),
-    url(r'^cart/remove', RemoveFromCartView.as_view(), name='cart_remove'),
 ]

@@ -35,6 +35,7 @@ class CartView(TemplateView):
         return super(CartView, self).get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
+        print(request.POST)
         cart = self.get_object()
         item_id = request.POST.get("item")
         delete_item = request.POST.get("delete", False)

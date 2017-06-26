@@ -5,27 +5,34 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-sm-10 col-sm-offset-2">
                 {% if object.cartitem_set.count < 1 %}
                 <div class='text-center'>
                     <h1>Your cart is empty</h1>
                 </div>
                 {% else %}
                 <h1>Your cart</h1>
-                <table class="table table-responsive">
+                <table class="table table-striped">
                     {% for item in object.cartitem_set.all %}
-                    <tr id='item-{{ item.item.id }}'>
-                        <td>{{ item.item.get_title }}</td>
+                    <tr id='item-{{ item.product.id }}'>
+                        <td>{{ item.product.name }}</td>
                         <td>
-                            <form action="." method="POST" >
+                            <form action="{% url 'cart' %}" method="POST" class="form-inline">
                                 {% csrf_token %}
-                                <input type='hidden' name='item' value='{{ item.item.id }}' />
-                                <input type='number' class='item-qty' name='qty' value='{{ item.quantity }}' />
-                                <input type='submit' class='btn-update btn btn-link' value='Update item'/>
+                                <input type='hidden' name='item' value='{{ item.product.id }}' />
+                                <input type='number' class='form-control item-qty' name='qty' value='{{ item.quantity }}' />
+                                <input type='submit' class='btn-update btn btn-link btn-sm' value='Update item'/>
                             </form>
                         </td>
-                        <td id='item-line-total-{{ item.item.id }}'>{{ item.line_item_total }}</td>
-                        <td class='text-right' ><a href='{{ item.remove }}'>X</a></td>
+                        <td id='item-line-total-{{ item.product.id }}'>{{ item.line_item_total }}</td>
+                        <td class='text-right' >
+                            <form action="{% url 'cart' %}" method="POST" class="form-inline">
+                                {% csrf_token %}
+                                <input type='hidden' name='item' value='{{ item.product.id }}' />
+                                <input type="hidden" name="delete" value="True"/>
+                                <button type="submit" class="btn btn-link btn-sm">Remove</button>
+                            </form>
+                        </td>
                     </tr>
                     {% endfor %}
                     <tr>
