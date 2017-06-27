@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from store.views.home_page_view import HomePageView
-from store.views.product_list_view import ProductListView
+from products.views.product_list_view import ProductListView
 from checkout.views.cart_view import CartView
 from checkout.views.checkout_address_view import CheckoutAddressView
 from checkout.views.checkout_confirmation_view import CheckoutConfirmationView
