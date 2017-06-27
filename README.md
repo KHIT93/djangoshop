@@ -98,6 +98,7 @@ INSTALLED_APPS = [
     'store',
     'customers',
     'products',
+    'orders',
     'checkout',
 ]
 
@@ -175,7 +176,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Copenhagen'
 
 USE_I18N = True
 
@@ -212,6 +213,7 @@ ACCOUNT_EMAIL_VERIFICATION="none"
 ACCOUNT_DEFAULT_HTTP_PROTOCOL="https"
 ACCOUNT_LOGOUT_ON_GET=True
 ACCOUNT_USERNAME_REQUIRED=False
+
 ```
 
 Next you need to update your hosts file to allow accessing `djangoshop.local`
