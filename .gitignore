@@ -106,3 +106,5 @@ node_modules/
 *.sqlite3
 #macOS specific ignores
 .DS_Store
+
+.idea
