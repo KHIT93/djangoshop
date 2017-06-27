@@ -13,14 +13,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='stripecustomer',
-            name='user',
-        ),
         migrations.AddField(
             model_name='stripecustomer',
             name='customer',
-            field=models.OneToOneField(default=0, on_delete=django.db.models.deletion.CASCADE, to='customers.Customer'),
+            field=models.OneToOneField(default=1, on_delete=django.db.models.deletion.CASCADE, to='customers.Customer'),
             preserve_default=False,
         ),
     ]
