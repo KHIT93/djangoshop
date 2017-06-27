@@ -44,8 +44,10 @@ class CheckoutConfirmationView(TemplateView):
         if request.is_ajax():
             data = json.loads(request.body)
             token = data["stripeToken"]
+            payment_method = data["payment_method"]
         else:
             data = request.POST
+            payment_method = request.POST.get("payment_method")
         invoiced = False
         if payment_method == "stripe":
             stripe.api_key = AppSetting.objects.get(key="STRIPE_SECRET_KEY").value
