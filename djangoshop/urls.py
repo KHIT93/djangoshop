@@ -28,7 +28,7 @@ from customers.views.myaccount_detail_view import MyAccountDetailView
 urlpatterns = [
     url(r'^$', HomePageView.as_view(), name='home'),
     url(r'^product/(?P<pk>\d+)', ProductDetailView.as_view(), name='product'),
-    url('^myaccount/', MyAccountDetailView.as_view(), name='myaccount'),
+    url('^myaccount/$', MyAccountDetailView.as_view(), name='myaccount'),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^cart/', CartView.as_view(), name='cart'),
