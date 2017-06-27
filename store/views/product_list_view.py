@@ -16,4 +16,9 @@ class ProductListView(ListView):
             context['product_list'] = Product.objects.filter(category=self.kwargs['pk'])
         else:
             context['product_list'] = Product.objects.all()[:12]
+
+        query = self.request.GET.get('search')
+        if query:
+            context['product_list'] = Product.objects.filter(name__icontains=query)
+
         return context
