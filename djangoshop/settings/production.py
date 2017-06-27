@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'customers',
     'products',
     'checkout',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -95,8 +96,12 @@ WSGI_APPLICATION = 'djangoshop.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'djangoshop',
+        'USER': 'djangoshop',
+        'PASSWORD': 'Django99##',
+        'HOST': '172.16.240.6',
+        'PORT': '3306',
     }
 }
 
@@ -143,9 +148,9 @@ SITE_ID = 1
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "assets/dist")
-#STATICFILES_DIRS = [
-#    os.path.join(BASE_DIR, "static")
-#]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "assets", "compiled")
+]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'

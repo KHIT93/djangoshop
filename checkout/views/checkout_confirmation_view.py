@@ -25,7 +25,10 @@ class CheckoutConfirmationView(TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super(CheckoutConfirmationView, self).get_context_data(*args, **kwargs)
         context["cart"] = self.get_cart()
-        context["stripe_key"] = AppSetting.objects.get(key="STRIPE_PUBLISHABLE_KEY")
+        try:
+            context["stripe_key"] = AppSetting.objects.get(key="STRIPE_PUBLISHABLE_KEY")
+        except AppSetting.DoesNotExist:
+            context["stripe_key"] = None
         return context
 
     def get(self, request, *args, **kwargs):
@@ -34,23 +37,29 @@ class CheckoutConfirmationView(TemplateView):
         return super(CheckoutConfirmationView, self).get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        data = json.loads(request.body)
-        invoiced = False
+        data = None
+        token = None
         cart = self.get_cart()
-        print(data["stripeToken"])
-        context = super(CheckoutConfirmationView, self).get_context_data(*args, **kwargs)
-        stripe.api_key = AppSetting.objects.get(key="STRIPE_SECRET_KEY").value
-        token = data["stripeToken"]
-        print(cart.total_in_lowest())
-        charge = stripe.Charge.create(
-            amount=cart.total_in_lowest(),
-            currency="usd",
-            description="Payment for order",
-            source=token,
-        )
-        if data["payment_method"] == "stripe":
+        payment_method = None
+        if request.is_ajax():
+            data = json.loads(request.body)
+            token = data["stripeToken"]
+            payment_method = data["payment_method"]
+        else:
+            data = request.POST
+            payment_method = request.POST.get("payment_method")
+        invoiced = False
+        if payment_method == "stripe":
+            stripe.api_key = AppSetting.objects.get(key="STRIPE_SECRET_KEY").value
+            charge = stripe.Charge.create(
+                amount=cart.total_in_lowest(),
+                currency="usd",
+                description="Payment for order",
+                source=token,
+            )
             invoiced = True
 
+        context = super(CheckoutConfirmationView, self).get_context_data(*args, **kwargs)
         order = Order.objects.create(customer=cart.customer, invoiced=invoiced)
         for i in cart.cartitem_set.all():
             OrderLine.objects.create(order=order, product=i.product, quantity=i.quantity)

@@ -32,7 +32,9 @@
                         <input type="hidden" name="payment_method" value="bank_transfer"/>
                         <button type="submit" class="btn btn-secondary">Pay with bank transfer</button>
                     </form>
+                    {% if stripe_key != None %}
                     <checkout-form paymentkey="{{ stripe_key.value }}" email="{{ cart.customer.user.email }}" amount="{{ cart.total }}" paymenturl="{% url 'checkout_confirm' %}"/>
+                    {% endif %}
                 </div>
             </div>
         </div>
