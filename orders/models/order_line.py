@@ -15,6 +15,9 @@ class OrderLine(models.Model):
     def __str__(self):
         return str(self.order)
 
+    def __unicode__(self):
+        return str(self.order)
+
 def order_line_pre_save_receiver(sender, instance, *args, **kwargs):
     qty = int(instance.quantity)
     if qty >= 1:

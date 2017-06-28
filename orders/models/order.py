@@ -19,3 +19,6 @@ class Order(models.Model):
             subtotal += item.line_item_total
         self.total = "%.2f" %(subtotal)
         self.save()
+
+    def __unicode__(self):
+        return str(self.customer)

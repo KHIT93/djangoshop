@@ -1,24 +1,29 @@
-from django.views.generic import ListView
 from products.models.category import Category
 from products.models.product import Product
+from django.views.generic import ListView
 
 
 class ProductListView(ListView):
     template_name = "product_list.html"
-    model = Category
-    context_object_name = "category"
+    model = Product
+    context_object_name = "product"
 
     def get_context_data(self, *args, **kwargs):
         # Call the base implementation first to get a context
         context = super(ProductListView, self).get_context_data(**kwargs)
-
-        if 'pk' in self.kwargs:
-            context['product_list'] = Product.objects.filter(category=self.kwargs['pk'])
-        else:
-            context['product_list'] = Product.objects.all()[:12]
-
-        query = self.request.GET.get('search')
-        if query:
-            context['product_list'] = Product.objects.filter(name__icontains=query)
-
+        # Store the categories in the context
+        context["category_list"] = Category.objects.all()
         return context
+
+    def get_queryset(self):
+        queryset = Product.objects.all()
+
+        # Filter on category if there is one selected
+        if 'pk' in self.kwargs:
+            queryset = queryset.filter(category=self.kwargs['pk'])
+
+        # Filter on search string if one is part of the get
+        if self.request.GET.get('search'):
+            queryset = queryset.filter(name__icontains=self.request.GET.get('search'))
+        return queryset
+

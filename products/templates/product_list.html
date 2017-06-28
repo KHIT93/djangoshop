@@ -4,16 +4,11 @@
 
 {% block content %}
 
-<!--
-<ul class="nav flex-column">
-
-</ul>
--->
 <div class="container">
     <div class="d-flex flex-row">
         <nav class="sidebar" style="width:300px">
           <ul class="navbar-nav nav-pills flex-column">
-            {% for cat in category %}
+            {% for cat in category_list %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'shop' pk=cat.id %}">
                         {{cat.name}}<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span>
@@ -24,7 +19,7 @@
         </nav>
         <div class="p-2">
             <div class="d-flex flex-wrap">
-        {% for product in product_list %}
+        {% for product in product %}
             <div class="p-2">
                 <img data-src="holder.js/100px300/thumb" alt="Card image cap">
                     <p class="card-text">{{product.name}}</p>
