@@ -24,7 +24,7 @@
                 <a class="navbar-brand" href="#">Djangoshop</a>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="/">Home</a>
                         </li>
                         <li class="nav-item">
@@ -60,7 +60,7 @@
             </nav>
             {% block content %}{% endblock %}
         </div>
-        
+
         <script src="https://checkout.stripe.com/checkout.js"></script>
         <script defer src="{% static 'js/frontend.js' %}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.4/holder.js"></script>
