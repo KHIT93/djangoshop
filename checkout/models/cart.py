@@ -4,6 +4,7 @@ from .cart_item import CartItem
 from products.models.product import Product
 from customers.models.customer import Customer
 
+
 class Cart(models.Model):
     customer = models.ForeignKey(Customer, null=True, blank=True)
     items = models.ManyToManyField(Product, through=CartItem)
