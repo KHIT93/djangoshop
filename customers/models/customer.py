@@ -14,3 +14,6 @@ class Customer(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+    def __unicode__(self):
+        return self.__str__()
