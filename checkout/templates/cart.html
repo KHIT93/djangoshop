@@ -40,7 +40,11 @@
                     </tr>
                     <tr>
                         <td colspan="4" class="text-right">
+                            {% if request.user.is_authenticated %}
                             <a href="{% url 'checkout_address' %}" class="btn btn-info">Checkout</a>
+                            {% else %}
+                            <a href="{% url 'account_login' %}" class="btn btn-info">Sign in</a>
+                            {% endif %}
                         </td>
                     </tr>
                 </table>

@@ -28,6 +28,8 @@ class CheckoutAddressView(TemplateView):
     def get(self, request, *args, **kwargs):
         if self.get_context_data(*args, **kwargs)["cart"].cartitem_set.count == 0:
             return HttpResponseRedirect(reverse("cart"))
+        if not request.user.is_authenticated:
+            return HttpResponseRedirect(reverse("cart"))
         return super(CheckoutAddressView, self).get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
